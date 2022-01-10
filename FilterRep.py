@@ -101,6 +101,8 @@ def assign_csv_repeats(workdir, csvs):
     df_csv_annots.drop('chrom_rank', 1, inplace=True)
     df_csv_annots.to_csv(annot_out, index=False, header=False, sep="\t")
 
+    os.remove(trf_overlaps)
+    os.remove(rmsk_overlaps)
 
 def overlap(a,b,c,d):
     r = 0 if a==c and b==d else min(b,d)-max(a,c)
@@ -125,6 +127,7 @@ def filter_csvs_by_trs(rep_annot, output):
 
     output_writer.close()
     print('CSVs outside TRs: ', len(df_csv_reps) - tr_calls)
+    os.remove(rep_annot)
 
 
 def run_filter_rep(workdir, svision_vcf):
@@ -141,3 +144,5 @@ def run_filter_rep(workdir, svision_vcf):
     ## Step 3 filter CSV by VNTR/STR
     prefix = os.path.basename(raw_csv).split('.')[0]
     filter_csvs_by_trs(f'{workdir}/{prefix}.repannot.tsv', f'{workdir}/{prefix}.HQ-CSVs.tsv')
+
+    print(f'High-quality CSVs are obtained, please check in {prefix}.HQ-CSVs.tsv')

@@ -19,12 +19,12 @@ from intervaltree import IntervalTree
 from Configs import *
 
 
-def run_filter_region_graph(svision_vcf, svision_exact_graph, ref_fasta, exclude_file, exclude_graphid, min_sr, max_sv_size, outdir):
+def run_filter_region_graph(svision_vcf, svision_exact_graph, exclude_graphid, min_sr, max_sv_size, outdir):
 
     filtered_prefix = '.'.join(os.path.basename(svision_vcf).split('.')[0:-1])
 
-    exclude_dict = parse_exclude_regions(exclude_file)
-    ref_file = pysam.FastaFile(ref_fasta)
+    exclude_dict = parse_exclude_regions(EXCLUDE)
+    ref_file = pysam.FastaFile(REF)
     incomplete_graphs, complete_graphs = get_incomplete_graphID(svision_exact_graph)
 
     csv_by_id = {}
@@ -92,6 +92,9 @@ def run_filter_region_graph(svision_vcf, svision_exact_graph, ref_fasta, exclude
 
     print('SV after filtering {0}, containing {1} CSVs'.format(all_sv_num, len(high_conf_csv_list)))
 
+    print('Files generated under workdir: ')
+    print(f"\t1. {filtered_prefix}.Raw-CSVs.tsv")
+    print(f'\t2. {filtered_prefix}.filtered.vcf')
 
 def parse_exclude_regions(exclude):
     exclude_dict = {}
