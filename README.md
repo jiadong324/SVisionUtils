@@ -6,6 +6,10 @@ This repository provides support for SVision downstream CSV filter and analysis.
 
 ### Usage
 
+#### Dependencies
+
+Please install pandas, numpy and [intervaltree](https://pypi.org/project/intervaltree/). 
+
 #### Prepare config file
 
 **NOTE:** Default values in the config file are used to produce results in the paper
