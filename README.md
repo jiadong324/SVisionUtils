@@ -1,7 +1,6 @@
 
 <div align=left><img width=30% height=30% src="https://github.com/xjtu-omics/SVision/blob/master/supports/svision-logo.png"/></div>
 
-
 This repository provides support for SVision downstream CSV filter and analysis.
 
 
@@ -10,6 +9,8 @@ This repository provides support for SVision downstream CSV filter and analysis.
 #### Dependencies
 
 Please install pandas, numpy and [intervaltree](https://pypi.org/project/intervaltree/). 
+
+The call set for the paper is under ./supports.
 
 #### Prepare config file
 
