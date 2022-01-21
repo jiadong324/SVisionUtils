@@ -10,7 +10,7 @@ This repository provides support for SVision downstream CSV filter and analysis.
 
 Please install pandas, numpy and [intervaltree](https://pypi.org/project/intervaltree/). 
 
-The call set for the paper is under ./supports.
+The call set for the paper is ./supports/HG00733.svision.s5.graph.vcf.
 
 #### Prepare config file
 
@@ -30,7 +30,7 @@ The config file requires:
 
 
 ```
-python FilterMain.py -v svision.vcf -g graph_exact_match.txt -w ./workdir -i 0,3
+python FilterMain.py supports/HG00733.svision.s5.graph.vcf -g ./supports/HG00733.graph_exactly_match.txt -w ./output_dir -i 0,3
 ```
 
 This will generate three files:
@@ -39,5 +39,5 @@ This will generate three files:
 
 *prefix*.Raw-CSVs.tsv: SVision CSVs filtered by graph structures.
 
-*prefix*.HQ-CSVs.tsv: CSVs additionally filtered by simple repeats.
+*prefix*.HQ-CSVs.tsv: CSVs additionally filtered by tandem repeats.
 
